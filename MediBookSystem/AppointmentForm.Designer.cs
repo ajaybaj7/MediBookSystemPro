@@ -18,7 +18,7 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.txtPatient = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
-			this.txtDoctor = new System.Windows.Forms.TextBox();
+			this.cmbDoctor = new System.Windows.Forms.ComboBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.dateTimePicker1 = new System.Windows.Forms.TextBox();
 			this.label4 = new System.Windows.Forms.Label();
@@ -40,6 +40,7 @@
 			this.btnUpdate = new System.Windows.Forms.Button();
 			this.btnDelete = new System.Windows.Forms.Button();
 			this.btnClear = new System.Windows.Forms.Button();
+			this.btnExport = new System.Windows.Forms.Button();
 			this.dgvAppointments = new System.Windows.Forms.DataGridView();
 
 			this.panelHeader.SuspendLayout();
@@ -69,7 +70,7 @@
 			this.panelForm.Controls.Add(this.label1);
 			this.panelForm.Controls.Add(this.txtPatient);
 			this.panelForm.Controls.Add(this.label2);
-			this.panelForm.Controls.Add(this.txtDoctor);
+			this.panelForm.Controls.Add(this.cmbDoctor);
 			this.panelForm.Controls.Add(this.label3);
 			this.panelForm.Controls.Add(this.dateTimePicker1);
 			this.panelForm.Controls.Add(this.label4);
@@ -113,14 +114,16 @@
 			this.label2.Name = "label2";
 			this.label2.Text = "DOCTOR NAME";
 
-			this.txtDoctor.BackColor = System.Drawing.Color.FromArgb(51, 65, 85);
-			this.txtDoctor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.txtDoctor.Font = new System.Drawing.Font("Segoe UI", 10F);
-			this.txtDoctor.ForeColor = System.Drawing.Color.White;
-			this.txtDoctor.Location = new System.Drawing.Point(175, 28);
-			this.txtDoctor.Name = "txtDoctor";
-			this.txtDoctor.Size = new System.Drawing.Size(150, 25);
-			this.txtDoctor.TabIndex = 2;
+			this.cmbDoctor.BackColor = System.Drawing.Color.FromArgb(51, 65, 85);
+			this.cmbDoctor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cmbDoctor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.cmbDoctor.Font = new System.Drawing.Font("Segoe UI", 10F);
+			this.cmbDoctor.ForeColor = System.Drawing.Color.White;
+			this.cmbDoctor.FormattingEnabled = true;
+			this.cmbDoctor.Location = new System.Drawing.Point(175, 28);
+			this.cmbDoctor.Name = "cmbDoctor";
+			this.cmbDoctor.Size = new System.Drawing.Size(150, 25);
+			this.cmbDoctor.TabIndex = 2;
 
 			// Date
 			this.label3.AutoSize = true;
@@ -325,12 +328,6 @@
 			this.btnClear.UseVisualStyleBackColor = false;
 			this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
 
-			this.btnExport = new System.Windows.Forms.Button();
-
-			// inside panelButtons.Controls.Add list, add:
-			this.panelButtons.Controls.Add(this.btnExport);
-
-			// button properties:
 			this.btnExport.BackColor = System.Drawing.Color.FromArgb(139, 92, 246);
 			this.btnExport.FlatAppearance.BorderSize = 0;
 			this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -402,9 +399,9 @@
 		private System.Windows.Forms.Panel panelButtons;
 		private System.Windows.Forms.Label label1, label2, label3, label4, label5;
 		private System.Windows.Forms.Label label6, label7, label8;
-		private System.Windows.Forms.TextBox txtPatient, txtDoctor, dateTimePicker1;
+		private System.Windows.Forms.TextBox txtPatient, dateTimePicker1;
 		private System.Windows.Forms.TextBox txtTime, txtSymptoms, txtAge, txtContact;
-		private System.Windows.Forms.ComboBox cmbGender;
+		private System.Windows.Forms.ComboBox cmbGender, cmbDoctor;
 		private System.Windows.Forms.Label labelSearch;
 		private System.Windows.Forms.TextBox txtSearch;
 		private System.Windows.Forms.Button btnSearch, btnBook, btnUpdate, btnDelete, btnClear;

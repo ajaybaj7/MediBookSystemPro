@@ -11,6 +11,29 @@ namespace MediBookSystem
 		{
 			InitializeComponent();
 			LoadPatients();
+
+			txtPatientName.KeyPress += Validator.NameChars;
+			txtAge.KeyPress += Validator.DigitsOnly;
+			txtAge.MaxLength = 3;
+			txtPatientContact.KeyPress += Validator.PhoneChars;
+			txtPatientContact.MaxLength = 15;
+		}
+
+		private bool ValidatePatient()
+		{
+			if (!Validator.IsName(txtPatientName.Text))
+				return Validator.Fail(txtPatientName, "Enter a valid patient name (letters only, 2-50 characters).");
+
+			int age;
+			if (!Validator.TryAge(txtAge.Text, out age))
+				return Validator.Fail(txtAge, "Age must be a whole number between 1 and 120.");
+
+			if (string.IsNullOrWhiteSpace(cmbGender.Text))
+				return Validator.Fail(cmbGender, "Please select a gender.");
+
+			if (!Validator.IsPhone(txtPatientContact.Text))
+				return Validator.Fail(txtPatientContact, "Contact must be 7 to 15 digits (a + is allowed at the start).");
+			return true;
 		}
 
 		public void LoadPatients()
@@ -36,18 +59,7 @@ namespace MediBookSystem
 
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
-			if (string.IsNullOrWhiteSpace(txtPatientName.Text) ||
-				string.IsNullOrWhiteSpace(txtAge.Text) ||
-				string.IsNullOrWhiteSpace(txtPatientContact.Text))
-			{
-				MessageBox.Show(
-					"Please fill in all fields.",
-					"Validation",
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Warning
-				);
-				return;
-			}
+			if (!ValidatePatient()) return;
 
 			MySqlConnection conn = DBConnection.GetConnection();
 			try
@@ -90,6 +102,8 @@ namespace MediBookSystem
 				);
 				return;
 			}
+
+			if (!ValidatePatient()) return;
 
 			int id = Convert.ToInt32(dgvPatients.SelectedRows[0].Cells[0].Value);
 			MySqlConnection conn = DBConnection.GetConnection();

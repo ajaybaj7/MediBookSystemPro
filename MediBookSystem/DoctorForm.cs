@@ -11,6 +11,24 @@ namespace MediBookSystem
 		{
 			InitializeComponent();
 			LoadDoctors();
+
+			txtDoctorName.KeyPress += Validator.NameChars;
+			txtDoctorName.MaxLength = 50;
+			txtSpecialization.KeyPress += Validator.NameChars;
+			txtSpecialization.MaxLength = 50;
+			txtContact.KeyPress += Validator.PhoneChars;
+			txtContact.MaxLength = 15;
+		}
+
+		private bool ValidateDoctor()
+		{
+			if (!Validator.IsName(txtDoctorName.Text))
+				return Validator.Fail(txtDoctorName, "Enter a valid doctor name, e.g. \"Amit Mishra\" (letters only, 2-50 characters).");
+			if (!Validator.IsSpecialization(txtSpecialization.Text))
+				return Validator.Fail(txtSpecialization, "Enter a valid specialization, e.g. \"Surgeon\" or \"Heart Specialist\" (letters only, 2-50 characters).");
+			if (!Validator.IsPhone(txtContact.Text))
+				return Validator.Fail(txtContact, "Enter a valid mobile number, e.g. 9841234567.");
+			return true;
 		}
 
 		public void LoadDoctors()
@@ -36,18 +54,7 @@ namespace MediBookSystem
 
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
-			if (string.IsNullOrWhiteSpace(txtDoctorName.Text) ||
-				string.IsNullOrWhiteSpace(txtSpecialization.Text) ||
-				string.IsNullOrWhiteSpace(txtContact.Text))
-			{
-				MessageBox.Show(
-					"Please fill in all fields.",
-					"Validation",
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Warning
-				);
-				return;
-			}
+			if (!ValidateDoctor()) return;
 
 			MySqlConnection conn = DBConnection.GetConnection();
 			try
@@ -89,6 +96,8 @@ namespace MediBookSystem
 				);
 				return;
 			}
+
+			if (!ValidateDoctor()) return;
 
 			int id = Convert.ToInt32(dgvDoctors.SelectedRows[0].Cells[0].Value);
 			MySqlConnection conn = DBConnection.GetConnection();

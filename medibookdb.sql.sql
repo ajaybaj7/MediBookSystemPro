@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2026 at 01:12 PM
+-- Generation Time: Oct 09, 2026 at 04:39 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,7 +44,9 @@ CREATE TABLE `appointments` (
 --
 
 INSERT INTO `appointments` (`id`, `patient_name`, `age`, `gender`, `contact`, `doctor_name`, `appointment_date`, `appointment_time`, `symptoms`) VALUES
-(8, 'troy', 20, 'Male', '9861636465', 'dr. Ram', '01-21', '10:00 AM', 'high fever');
+(8, 'troy', 20, 'Male', '9861636465', 'dr. Ram', '01-21', '10:00 AM', 'high fever'),
+(12, 'ram sharma', 23, 'Male', '9834567890', 'Dr. Anita Sharma', '2026-12-01', '11:11 AM', 'fever, pain in heart, nausea, vomitting'),
+(13, 'ram sharan yadav', 28, 'Male', '9834567789', 'Dr. Amit Mishra', '2026-12-01', '12:11 AM', 'fever, pain in heart, nausea, broken tibiya, vomitting');
 
 -- --------------------------------------------------------
 
@@ -67,7 +69,8 @@ CREATE TABLE `billing` (
 --
 
 INSERT INTO `billing` (`id`, `patient_name`, `doctor_name`, `service`, `amount`, `payment_status`, `bill_date`) VALUES
-(1, 'troy', 'Dr. Ram', 'Consultation', 500.00, 'Unpaid', '2026-09-30 16:08:12');
+(1, 'troy', 'Dr. Ram', 'Consultation', 500.00, 'Unpaid', '2026-09-30 16:08:12'),
+(3, 'suman koirala', 'Dr. Anita Sharma', 'consultaion', 500.00, 'Paid', '2026-10-09 19:12:10');
 
 -- --------------------------------------------------------
 
@@ -87,7 +90,9 @@ CREATE TABLE `doctors` (
 --
 
 INSERT INTO `doctors` (`id`, `doctor_name`, `specialization`, `contact`) VALUES
-(4, 'Dr. Ram', 'Everything', '9841454680');
+(4, 'Dr. Ram', 'Everything', '9841454680'),
+(5, 'Dr. Anita Sharma', 'heart', '9861667089'),
+(6, 'Dr. Amit Mishra', 'Surgeon', '9834567890');
 
 -- --------------------------------------------------------
 
@@ -108,7 +113,9 @@ CREATE TABLE `patients` (
 --
 
 INSERT INTO `patients` (`id`, `patient_name`, `age`, `gender`, `contact`) VALUES
-(4, 'troy', 20, 'Male', '9861646566');
+(4, 'troy', 20, 'Male', '9861646566'),
+(5, 'suman koirala', 25, 'Male', '9845567890'),
+(6, 'Sagar Ghising', 33, 'Male', '9804567091');
 
 -- --------------------------------------------------------
 
@@ -131,7 +138,8 @@ CREATE TABLE `staff` (
 
 INSERT INTO `staff` (`id`, `staff_name`, `role`, `contact`, `email`, `address`) VALUES
 (1, 'Ram Sharma', 'Nurse', '9841000001', 'ram@medibook.com', 'Kathmandu'),
-(2, 'Sita Thapa', 'Lab Technician', '9841000002', 'sita@medibook.com', 'Lalitpur');
+(2, 'Sita Thapa', 'Lab Technician', '9841000002', 'sita@medibook.com', 'Lalitpur'),
+(3, 'Hari Sharma', 'Pharmacist', '9841000080', 'hari@medibook.com', 'kathmandu');
 
 -- --------------------------------------------------------
 
@@ -205,31 +213,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `billing`
 --
 ALTER TABLE `billing`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `doctors`
 --
 ALTER TABLE `doctors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`

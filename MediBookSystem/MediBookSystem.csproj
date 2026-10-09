@@ -160,6 +160,7 @@
       <DependentUpon>SuperAdminForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ThemeManager.cs" />
+    <Compile Include="Validator.cs" />
     <EmbeddedResource Include="AppointmentForm.resx">
       <DependentUpon>AppointmentForm.cs</DependentUpon>
     </EmbeddedResource>
